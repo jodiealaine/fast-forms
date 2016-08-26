@@ -32,10 +32,18 @@
 				<div class="card-panel">
 					<h4 class="card-title">Create your account</h4>
 					<br>
-					<form id="sign-up-form">
+					<form id="sign-up-form" name="sign-up-form" novalidate="novalidate">
 						<div class="input-field">
-							<input type="text" name="name" id="name" autocomplete="name" placeholder="Full name" required autofocus="true">
-							<label for="name">Name<sup>*</sup></label>
+							<input type="text" 
+							name="name" 
+							id="name" 
+							autocomplete="name" 
+							placeholder="Full name" 
+							minlength="3" 
+							autofocus="true" 
+							class="validate"
+							required >
+							<label for="name" data-error="Please enter a name" data-success="correct">Name<sup>*</sup></label>
 						</div>
 						<div class="input-field">
 							<input type="email" 
@@ -54,7 +62,8 @@
 							class="validate" 
 							autocomplete="current-password" 
 							placeholder="Password (min 8 chars consisting of min one number)" 
-							pattern="(?=.*\d).{8,}" >
+							pattern="(?=.*\d).{8,}"
+							required>
 							<label for="password" data-error="Minimum length 8 characters and at least one number" data-success="correct">Password<sup>*</sup></label>
 						</div>
 						<div class="input-field">
@@ -65,7 +74,7 @@
 							autocomplete="current-password" 
 							placeholder="Password" 
 							pattern="(?=.*\d).{8,}" required>
-							<label for="password-confirmation" data-error="Paswords must match" data-success="correct">Password Confirmation<sup>*</sup></label>
+							<label for="password-confirmation" data-error="Passwords must match" data-success="correct">Password Confirmation<sup>*</sup></label>
 						</div>
 						<div class="input-field">
 							<input type="tel" 
@@ -85,9 +94,30 @@
 	</div>
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 	<script type="text/javascript">
+	 	// Mobile Navigation
 		$(".button-collapse").sideNav();
+		
+		// Validation for sign-up-form
+		$.validator.setDefaults({
+    	errorClass: 'invalid',
+    	validClass: "valid",
+    	errorPlacement: function (error, element) {
+        $(element)
+            .closest("form")
+            .find("input[id='" + element.attr("id") + "']")
+            .attr('class', 'validate invalid');
+        console.log(error.text());
+    	}
+		});
+
+		$("#sign-up-form").validate({
+  		
+		});
+
 	</script>
 </body>
 </html>

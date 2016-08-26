@@ -33,10 +33,10 @@
 				<form id="add-event-form">
 					<div class="input-field">
 						<input type="text" name="name" id="name" autocomplete="name" placeholder="Event Name" required autofocus="true">
-						<label for="name">Name<sup>*</sup></label>
+						<label for="name" data-error="Please enter a name" data-success="correct">Name<sup>*</sup></label>
 					</div>
 					<div class="form-group">
-						<label>What type of event are you hosting?<sup>*</sup>
+						<label data-error="Please add your event type" data-success="correct">What type of event are you hosting?<sup>*</sup>
 							<input list="event-types" required>
 							<datalist id="event-types">
 								<option value="Gig"></option>
@@ -47,25 +47,25 @@
 					</div>
 					<div class="input-field">
 						<input type="text" name="host" id="host" placeholder="Host name" required>
-						<label for="host">Host</label>
+						<label for="host" data-error="Please enter a host" data-success="correct">Host<sup>*</sup></label>
 					</div>
 					<div class="row">
 						<div class="input-field col s6">
 							<input type="datetime-local" name="start-date" id="start-date" required>
-							<label for="start-date" class="active">Start Date<sup>*</sup></label>
+							<label for="start-date" data-error="Enter a valid date and time" data-success="correct" class="active">Start Date<sup>*</sup></label>
 						</div>
 						<div class="input-field col s6">
 			        		<input type="datetime-local" name="end-date" id="end-date" required>
-			        		<label for="end-date" class="active">End Date<sup>*</sup></label>
+			        		<label for="end-date" data-error="Enter a valid date and time" data-success="correct" class="active">End Date<sup>*</sup></label>
 						</div>
 					</div>
 					<div class="input-field">
 		        		<input type="text" name="guest-list" id="guest-list" placeholder="name@example.com, name2@example.com" required>
-		        		<label for="guest-list">Guest List<sup>*</sup></label>
+		        		<label for="guest-list" data-error="Please enter your guestlist" data-success="correct" >Guest List<sup>*</sup></label>
 					</div>
 					<div class="input-field">
 		        		<input type="text" name="location" id="location" placeholder="1 example street, Cornwall, UK." required>
-		        		<label for="location">Location<sup>*</sup></label>
+		        		<label for="location" data-error="Please enter the location" data-success="correct">Location<sup>*</sup></label>
 					</div>
 					<div class="input-field">
 		        		<input type="text" name="message" id="message" placeholder="Wear something blue!">
@@ -79,9 +79,27 @@
 	</div>
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 	<script type="text/javascript">
 		$(".button-collapse").sideNav();
+		// Validation for add-event-form
+		$.validator.setDefaults({
+    	errorClass: 'invalid',
+    	validClass: "valid",
+    	errorPlacement: function (error, element) {
+        $(element)
+            .closest("form")
+            .find("input[id='" + element.attr("id") + "']")
+            .attr('class', 'validate invalid');
+        console.log(error.text());
+    	}
+		});
+
+		$("#add-event-form").validate({
+  		
+		});
 	</script>
 </body>
 </html>
