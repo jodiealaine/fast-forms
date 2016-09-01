@@ -42,7 +42,7 @@
 							minlength="3" 
 							autofocus="true" 
 							class="validate"
-							required >
+							required>
 							<label for="name" data-error="Please enter a name" data-success="correct">Name<sup>*</sup></label>
 						</div>
 						<div class="input-field">
@@ -69,11 +69,13 @@
 						<div class="input-field">
 							<input type="password" 
 							name="password-confirmation" 
-							id="password-confirmation"
+							id="password_confirmation"
 							class="validate"
 							autocomplete="current-password" 
-							placeholder="Password" 
-							pattern="(?=.*\d).{8,}" required>
+							placeholder="Password"
+							pattern="(?=.*\d).{8,}" 
+							passwordMatch= true	
+							required>
 							<label for="password-confirmation" data-error="Passwords must match" data-success="correct">Password Confirmation<sup>*</sup></label>
 						</div>
 						<div class="input-field">
@@ -102,20 +104,38 @@
 		$(".button-collapse").sideNav();
 		
 		// Validation for sign-up-form
+
+		// additional method for password matching validation
+		jQuery.validator.addMethod( 'passwordMatch', function(value, element) {
+    
+    		var password = $("#password").val();
+    		var confirmPassword = $("#password_confirmation").val();
+
+    		if (password != confirmPassword ) {
+        		return false;
+    		} else {
+        		return true;
+    		}
+		});
+
+		// Main validation
 		$.validator.setDefaults({
-    	errorClass: 'invalid',
-    	validClass: "valid",
+    		errorClass: 'invalid',
+    		validClass: 'valid',
     	errorPlacement: function (error, element) {
         $(element)
-            .closest("form")
+            .closest('form')
             .find("input[id='" + element.attr("id") + "']")
             .attr('class', 'validate invalid');
-        console.log(error.text());
     	}
 		});
 
 		$("#sign-up-form").validate({
-  		
+  			rules: {
+  				password_confirmation: {
+  					passwordMatch: true
+  				}
+  			}
 		});
 
 	</script>
