@@ -34,7 +34,7 @@
 				<div class="card-panel">
 					<h4 class="card-title">Create your account</h4>
 					<br>
-					<form id="sign-up-form" name="sign-up-form" novalidate="novalidate">
+					<form id="sign-up-form" name="sign-up-form" action="events.html">
 						<div class="input-field">
 							<input type="text" 
 							name="full_name" 
@@ -45,7 +45,7 @@
 							autofocus 
 							class="validate"
 							required>
-							<label for="full_name" data-error="Please enter a name" data-success="correct">Name<sup>*</sup></label>
+							<label for="full_name" data-error="Minimum length 3 characters" data-success="correct">Name<sup>*</sup></label>
 						</div>
 						<div class="input-field">
 							<input type="email" 
@@ -63,10 +63,10 @@
 							id="password"
 							class="validate" 
 							autocomplete="current-password" 
-							placeholder="Password (min 8 chars consisting of min one number)" 
+							placeholder="Password (min 8 chars consisting of min 1 number)" 
 							pattern="(?=.*\d).{8,}"
 							required>
-							<label for="password" data-error="Minimum length 8 characters and at least one number" data-success="correct">Password<sup>*</sup></label>
+							<label for="password" data-error="Minimum length 8 characters and at least 1 number" data-success="correct">Password<sup>*</sup></label>
 						</div>
 						<div class="input-field">
 							<input type="password" 
@@ -85,9 +85,9 @@
 							id="phone" 
 							class="validate"
 							autocomplete="tel" 
-							placeholder="++441231233" 
-							pattern="[0-9]*">
-							<label for="phone" data-error="Phone number needs to be numerical only" data-success="correct">Phone Number (optional)</label>
+							placeholder="0121112211" 
+							>
+							<label for="phone" data-error="Valid UK number only. e.g 0121112211" data-success="correct">Phone Number (optional)</label>
 						</div>
 						<button type="submit" id="sign-up" class="btn btn-success">Create Account</button>
 					</form>
