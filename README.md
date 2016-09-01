@@ -9,4 +9,5 @@ A planning app to manage events utilising fast forms.
 1. Clone / Download the project
 2. Run 'npm install'
 3. Run 'gulp'
+4. Run 'gulp serve:dist'
 
