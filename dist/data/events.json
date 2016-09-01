@@ -1,0 +1,68 @@
+[
+    {
+        "id": "eventone",
+        "name": "Lucy's Wedding",
+        "type": "Wedding",
+        "host": "Juliet Adams",
+        "start_date": "2016-06-14T20:00:00",
+        "end_date": "2016-06-14T23:00:00",
+        "guest_list": ["name@example.com", "name2@example.com"],
+        "location": "Church on Church Street, London, UK",
+        "message": "Wear blue!"
+    },
+    {
+        "id": "eventtwo",
+        "name": "Bob's Stag Do",
+        "type": "Stag",
+        "host": "Johnsy",
+        "start_date": "2016-08-14T20:00:00",
+        "end_date": "2016-08-14T23:00:00",
+        "guest_list": ["name@example.com", "name2@example.com"],
+        "location": "All Bar One, London, UK",
+        "message": "Wear shorts!"
+    },
+    {
+        "id": "eventthree",
+        "name": "Photography Weekly",
+        "type": "Meetup",
+        "host": "Juliet Smith",
+        "start_date": "2016-06-14T09:00:00",
+        "end_date": "2016-06-14T20:00:00",
+        "guest_list": ["name@example.com", "name2@example.com"],
+        "location": "London, UK",
+        "message": "Exact address sent out on the morning!"
+    },
+    {
+        "id": "eventfour",
+        "name": "Meditate London",
+        "type": "well-being",
+        "host": "Bob Adams",
+        "start_date": "2016-06-14T20:00:00",
+        "end_date": "2016-07-14T23:00:00",
+        "guest_list": ["name@example.com", "name2@example.com"],
+        "location": "Retreat Center, London, UK",
+        "message": "Book accommodation"
+    },
+    {
+        "id": "eventfive",
+        "name": "Sewing Weekly",
+        "type": "Meetup",
+        "host": "Juliet Smith",
+        "start_date": "2016-06-14T09:00:00",
+        "end_date": "2016-06-14T20:00:00",
+        "guest_list": ["name@example.com", "name2@example.com"],
+        "location": "London, UK",
+        "message": "Exact address sent out on the morning!"
+    },
+    {
+        "id": "eventsix",
+        "name": "Meditate Birmingham",
+        "type": "well-being",
+        "host": "Bob Adams",
+        "start_date": "2016-06-14T20:00:00",
+        "end_date": "2016-07-14T23:00:00",
+        "guest_list": ["name@example.com", "name2@example.com"],
+        "location": "Retreat Center, Birmingham, UK",
+        "message": "Book accommodation"
+    }
+]

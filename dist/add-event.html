@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="author" content="Jodie Alaine Parker | jodiealaine.github.io | @jodiealaine">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#db5945">
+	<title>Event Planner App</title>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./styles/main.css">
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo">events</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="index.html"><i class="material-icons">skip_previous</i></a></li>
+			</ul>
+			<ul class="side-nav" id="mobile-demo">
+				<li><a href="index.html"><i class="material-icons">skip_previous</i></a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m6 offset-m3">
+				<div class="card-panel">
+					<h4 class="card-title">Create your event</h4>
+					<br>
+				<form id="add-event-form" name="add-event-form" novalidate="novalidate">
+					<div class="input-field">
+						<input type="text" 
+                        name="name" 
+                        id="name" 
+                        autocomplete="name" 
+                        placeholder="Event Name"
+                        minlength="3"
+                        autofocus="true"
+                        class="validate" 
+                        required>
+						<label for="name" data-error="Please enter a name" data-success="correct">Name<sup>*</sup></label>
+					</div>
+					<div class="form-group">
+						<label data-error="Please add your event type" data-success="correct">What type of event are you hosting?<sup>*</sup>
+							<input list="event-types"
+                            class="validate"
+                            minlength="3" 
+                            required>
+							<datalist id="event-types">
+								<option value="Gig"></option>
+								<option value="Party"></option>
+								<option value="Birthday"></option>
+							</datalist>
+						</label>
+					</div>
+					<div class="input-field">
+						<input type="text" 
+                        name="host" 
+                        id="host"
+                        autocomplete="name" 
+                        placeholder="Host name"
+                        minlength="3" 
+                        class="validate"
+                        required>
+						<label for="host" data-error="Please enter a host" data-success="correct">Host<sup>*</sup></label>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<input type="datetime-local" 
+							name="start_date" 
+							id="start_date" 
+							class="validate"
+							required>
+							<label for="start_date" data-error="Enter a valid future date and time" data-success="correct" class="active">Start Date<sup>*</sup></label>
+						</div>
+						<div class="input-field col s6">
+			        		<input type="datetime-local" 
+                            name="end_date" 
+                            id="end_date"
+                            class="validate" 
+                            required>
+			        		<label for="end_date" data-error="Enter a date that is after the start date" data-success="correct" class="active">End Date<sup>*</sup></label>
+						</div>
+					</div>
+					<div class="input-field">
+		        		<input type="text" 
+                        name="guest-list" 
+                        id="guest-list" 
+                        placeholder="name@example.com, name2@example.com" 
+                        minlength="3" 
+                        class="validate"
+                        required>
+		        		<label for="guest-list" data-error="Please enter your guestlist" data-success="correct" >Guest List<sup>*</sup></label>
+					</div>
+					<div class="input-field">
+		        		<input type="text" 
+                        name="location" 
+                        id="location" 
+                        placeholder="1 example street, Cornwall, UK."
+                        minlength="3" 
+                        class="validate" 
+                        required>
+		        		<label for="location" data-error="Please enter the location" data-success="correct">Location<sup>*</sup></label>
+					</div>
+					<div class="input-field">
+		        		<input type="text" 
+                        name="message" 
+                        id="message" 
+                        placeholder="Wear something blue!">
+		        		<label for="message">Guest Message (optional)</label>
+					</div>
+					<button type="submit" id="sign-up" class="btn btn-success">Create Event</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+	<script type="text/javascript">
+		$(".button-collapse").sideNav();
+		
+		// Validation for add-event-form
+		moment().format();
+
+		// additional method for date matching validation
+		jQuery.validator.addMethod('futureDate', function(value, element) {
+			var startDate = $("#start_date").val();
+			var now = moment();
+
+			if (moment(startDate) <= now) {
+				return false;
+			} else {
+				return true;
+			}
+		});
+
+		jQuery.validator.addMethod('dateChecker', function(value, element) {
+    
+    		var startDate = $("#start_date").val();
+    		var endDate = $("#end_date").val();
+
+    		if (moment(startDate) >= moment(endDate)) {
+    			return false;
+    		} else {
+        		return true;
+    		}
+
+		});
+		$.validator.setDefaults({
+    		errorClass: 'invalid',
+    		validClass: "valid",
+    		errorPlacement: function (error, element) {
+        		$(element)
+            		.closest("form")
+            		.find("input[id='" + element.attr("id") + "']")
+            		.attr('class', 'validate invalid');
+    		}
+		});
+
+		$("#add-event-form").validate({
+  			rules: {
+  				start_date: {
+  					futureDate: true
+  				},
+  				end_date: {
+  					dateChecker: true
+  				}	
+  			}
+		});
+	</script>
+</body>
+</html>
