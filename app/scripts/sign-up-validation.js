@@ -33,6 +33,9 @@ $(document).ready(function () {
 					},
 					name: {
 						required: true
+					},
+					phone: {
+						phoneUK: true
 					}
 				},
 				onfocusout: function(element) { 
