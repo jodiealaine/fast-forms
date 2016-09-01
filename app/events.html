@@ -9,7 +9,9 @@
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- inject:css -->
 	<link rel="stylesheet" type="text/css" href="./styles/main.css">
+	<!-- endinject -->
 </head>
 <body>
 	<nav>
@@ -32,10 +34,13 @@
 	</div>
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="./scripts/events.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-	<script type="text/javascript">
-		$(".button-collapse").sideNav();
-	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+	<!-- inject:js -->
+	<script src="./scripts/navigation.js"></script>
+	<script src="./scripts/events.js"></script>
+	<!-- endinject -->
 </body>
 </html>

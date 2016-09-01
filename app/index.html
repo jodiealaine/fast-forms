@@ -9,7 +9,9 @@
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- inject:css -->
 	<link rel="stylesheet" type="text/css" href="./styles/main.css">
+	<!-- endinject -->
 </head>
 <body>
 	<nav>
@@ -40,7 +42,7 @@
 							autocomplete="name" 
 							placeholder="Full name" 
 							minlength="3" 
-							autofocus="true" 
+							autofocus 
 							class="validate"
 							required>
 							<label for="name" data-error="Please enter a name" data-success="correct">Name<sup>*</sup></label>
@@ -68,15 +70,14 @@
 						</div>
 						<div class="input-field">
 							<input type="password" 
-							name="password-confirmation" 
+							name="password_confirmation" 
 							id="password_confirmation"
 							class="validate"
 							autocomplete="current-password" 
 							placeholder="Password"
-							pattern="(?=.*\d).{8,}" 
-							passwordMatch= true	
+							pattern="(?=.*\d).{8,}"
 							required>
-							<label for="password-confirmation" data-error="Passwords must match" data-success="correct">Password Confirmation<sup>*</sup></label>
+							<label for="password_confirmation" data-error="Passwords must match" data-success="correct">Password Confirmation<sup>*</sup></label>
 						</div>
 						<div class="input-field">
 							<input type="tel" 
@@ -99,45 +100,10 @@
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-	<script type="text/javascript">
-	 	// Mobile Navigation
-		$(".button-collapse").sideNav();
-		
-		// Validation for sign-up-form
-
-		// additional method for password matching validation
-		jQuery.validator.addMethod( 'passwordMatch', function(value, element) {
-    
-    		var password = $("#password").val();
-    		var confirmPassword = $("#password_confirmation").val();
-
-    		if (password != confirmPassword ) {
-        		return false;
-    		} else {
-        		return true;
-    		}
-		});
-
-		// Main validation
-		$.validator.setDefaults({
-    		errorClass: 'invalid',
-    		validClass: 'valid',
-    	errorPlacement: function (error, element) {
-        $(element)
-            .closest('form')
-            .find("input[id='" + element.attr("id") + "']")
-            .attr('class', 'validate invalid');
-    	}
-		});
-
-		$("#sign-up-form").validate({
-  			rules: {
-  				password_confirmation: {
-  					passwordMatch: true
-  				}
-  			}
-		});
-
-	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+	<!-- inject:js -->
+	<script src="./scripts/navigation.js"></script>
+	<script src="./scripts/sign-up-validation.js"></script>
+	<!-- endinject -->
 </body>
 </html>
